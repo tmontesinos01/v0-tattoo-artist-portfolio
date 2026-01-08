@@ -2,180 +2,263 @@
 
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Instagram, MessageCircle, X } from "lucide-react"
+import { Instagram, MessageCircle, X, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
+import Link from "next/link"
 
 export default function TattooPortfolio() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0)
+  const [selectedItemId, setSelectedItemId] = useState<number | null>(null)
+  const [currentCardImageIndex, setCurrentCardImageIndex] = useState<{ [key: number]: number }>({})
+  const [currentVideoIndex, setCurrentVideoIndex] = useState<number>(0)
+
+  const videos = [
+    { id: 1, src: "/realismo_video.mp4", title: "Realismo" },
+    { id: 2, src: "/mascara_video.mp4", title: "Máscara" },
+    { id: 3, src: "/letter_video.mp4", title: "Lettering" },
+  ]
+
+  const handleCardImageChange = (itemId: number, direction: 'next' | 'prev') => {
+    const item = portfolioItems.find(i => i.id === itemId)
+    if (!item) return
+    
+    const currentIndex = currentCardImageIndex[itemId] || 0
+    let newIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1
+    
+    if (newIndex < 0) newIndex = item.images.length - 1
+    if (newIndex >= item.images.length) newIndex = 0
+    
+    setCurrentCardImageIndex({ ...currentCardImageIndex, [itemId]: newIndex })
+  }
+
+  const handleVideoChange = (direction: 'next' | 'prev') => {
+    let newIndex = direction === 'next' ? currentVideoIndex + 1 : currentVideoIndex - 1
+    
+    if (newIndex < 0) newIndex = videos.length - 1
+    if (newIndex >= videos.length) newIndex = 0
+    
+    setCurrentVideoIndex(newIndex)
+  }
 
   const portfolioItems = [
     {
       id: 1,
-      title: "LLEVA TU ARTE EN LA PIEL",
-      description: "Diseños personalizados que cuentan tu historia",
+      title: "REALISMO FRAGMENTADO",
+      description: "Técnica de realismo con fragmentación artística",
       badge: "NUEVO",
-      image: "/black-and-white-tattoo-sleeve-art.jpg",
+      images: ["/realismo_fragmentado.jpeg", "/realismo_fragmentado2.jpeg"],
     },
     {
       id: 2,
-      title: "VISITA NUESTRO ESTUDIO",
-      description: "Experimenta el arte en un entorno profesional",
+      title: "REALISMO MÁSCARA",
+      description: "Expresión artística en realismo detallado",
       badge: "DESTACADO",
-      image: "/tattoo-artist-studio.png",
+      images: ["/realismo_mascara.jpeg", "/realismo_mascara2.jpeg"],
     },
     {
       id: 3,
-      title: "DISEÑOS ÚNICOS",
-      description: "Arte único perfectamente ejecutado",
+      title: "REALISMO ROSTRO",
+      description: "Precisión y detalle en cada trazo",
       badge: "NUEVO",
-      image: "/unique-tattoo-design-detailed.jpg",
+      images: ["/realismo_rostro.jpeg", "/realismo_rostro2.jpeg"],
     },
     {
       id: 4,
-      title: "LIBERA TU REBELDÍA",
-      description: "Expresiones audaces con tinta",
+      title: "LETTERING",
+      description: "Arte tipográfico en tinta",
       badge: "DESTACADO",
-      image: "/rebellious-tattoo-art.jpg",
-    },
-    {
-      id: 5,
-      title: "OFERTA LIMITADA",
-      description: "Reserva ahora y obtén 15% de descuento en tu primera sesión",
-      badge: "NUEVO",
-      image: "/tattoo-flash-sheet-designs.jpg",
-    },
-    {
-      id: 6,
-      title: "VEN CON UNA IDEA",
-      description: "Vete con una obra maestra",
-      badge: "DESTACADO",
-      image: "/tattoo-artist-consultation.jpg",
+      images: ["/letter.jpeg"],
     },
   ]
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-md border-b border-zinc-800 px-4 py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <svg width="40" height="40" viewBox="0 0 531 213" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10">
+              <path d="M41.5 1H0.5V211.5H41.5V1Z" fill="#ffffff"/>
+              <path d="M193 1H152V211.5H193V1Z" fill="#ffffff"/>
+              <path d="M349 1H309V211.5H349V1Z" fill="#ffffff"/>
+              <path d="M440 55.5L408.5 1H362.312L416 96L440 55.5Z" fill="#ffffff"/>
+              <path d="M358 212L478.5 0.5H524.5L404 212H358Z" fill="#ffffff"/>
+              <path d="M484.544 211.5L447.5 147.337L470.228 107.971L530 211.5H484.544Z" fill="#ffffff"/>
+              <path d="M256.5 143C257.7 127 246.667 120.667 241 119.5H197.5V78.5H241.5C269 70.5 256 42.5 241.5 42.5H197.5V1.5L241.5 1.50001C300 -1.5 317.5 86 271.5 100.5C292.3 104.1 296.167 133.833 295.5 143V212H256.5V143Z" fill="#ffffff"/>
+              <path d="M46.5 119.5V78.5L90 79C111 69 103 42.5 88.5 42.5H46.5V2H90C148 2 159.5 84.5 113.5 99C157.5 112.5 158 201.5 90.5 211.5H46.5V170.5L90.5 171C111.5 161 104.5 119.5 90 119.5H46.5Z" fill="#ffffff"/>
+            </svg>
+          </Link>
+          <nav className="flex gap-6">
+            <a href="#portfolio" className="text-zinc-300 hover:text-orange-500 transition-colors font-bold">Portafolio</a>
+            <a href="#artist" className="text-zinc-300 hover:text-orange-500 transition-colors font-bold">Artista</a>
+            <a href="#contact" className="text-zinc-300 hover:text-orange-500 transition-colors font-bold">Contacto</a>
+          </nav>
+        </div>
+      </header>
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center px-4 py-20 overflow-hidden bg-zinc-950">
+      <section className="relative min-h-screen flex items-center px-4 py-20 overflow-hidden bg-zinc-950 pt-32">
         {/* Diagonal orange accent stripe */}
         <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-br from-orange-600 to-orange-700 -skew-x-12 -ml-8" />
 
         {/* Content container */}
-        <div className="relative z-10 max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left content */}
-          <div className="relative z-20">
-            <div className="mb-8 space-y-2">
-              <p className="text-sm font-mono tracking-widest text-orange-500 uppercase font-bold">
-                Arte en Tatuajes Personalizados
+        <div className="relative z-10 max-w-7xl mx-auto w-full">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left content */}
+            <div className="relative z-20">
+              <div className="mb-8 space-y-2">
+                <p className="text-sm font-mono tracking-widest text-orange-500 uppercase font-bold">
+                  Arte en Tatuajes Personalizados
+                </p>
+              </div>
+
+              <div className="mb-6 leading-none text-balance tracking-tight">
+                <svg width="531" height="213" viewBox="0 0 531 213" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-2xl mb-4">
+                  <path d="M41.5 1H0.5V211.5H41.5V1Z" fill="#ffffff"/>
+                  <path d="M193 1H152V211.5H193V1Z" fill="#ffffff"/>
+                  <path d="M349 1H309V211.5H349V1Z" fill="#ffffff"/>
+                  <path d="M440 55.5L408.5 1H362.312L416 96L440 55.5Z" fill="#ffffff"/>
+                  <path d="M358 212L478.5 0.5H524.5L404 212H358Z" fill="#ffffff"/>
+                  <path d="M484.544 211.5L447.5 147.337L470.228 107.971L530 211.5H484.544Z" fill="#ffffff"/>
+                  <path d="M256.5 143C257.7 127 246.667 120.667 241 119.5H197.5V78.5H241.5C269 70.5 256 42.5 241.5 42.5H197.5V1.5L241.5 1.50001C300 -1.5 317.5 86 271.5 100.5C292.3 104.1 296.167 133.833 295.5 143V212H256.5V143Z" fill="#ffffff"/>
+                  <path d="M46.5 119.5V78.5L90 79C111 69 103 42.5 88.5 42.5H46.5V2H90C148 2 159.5 84.5 113.5 99C157.5 112.5 158 201.5 90.5 211.5H46.5V170.5L90.5 171C111.5 161 104.5 119.5 90 119.5H46.5Z" fill="#ffffff"/>
+                </svg>
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none text-balance tracking-tight">
+                  TATTOO<span className="text-orange-600">®</span>
+                </h1>
+              </div>
+
+              <p className="text-base md:text-lg text-zinc-300 mb-8 max-w-md leading-relaxed">
+                Tatuajes únicos diseñados para vos. Nos especializamos en realismo, tradicional, dot work, puntillismo y
+                black work. Cada pieza es creada con precisión y pasión.
               </p>
-            </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-none text-balance tracking-tight">
-              BRIX
-              <br />
-              TATTOO<span className="text-orange-600">®</span>
-            </h1>
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <Button
+                  size="lg"
+                  className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-8 py-6 text-base rounded-none border-2 border-orange-600 transition-all flex items-center justify-center gap-2"
+                  asChild
+                >
+                  <a href="https://wa.me/5491234567890" target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="w-5 h-5" />
+                    CONTACTATE
+                  </a>
+                </Button>
+              </div>
 
-            <p className="text-base md:text-lg text-zinc-300 mb-8 max-w-md leading-relaxed">
-              Tatuajes únicos diseñados para vos. Nos especializamos en realismo, tradicional, dot work, puntillismo y
-              black work. Cada pieza es creada con precisión y pasión.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button
-                size="lg"
-                className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-8 py-6 text-base rounded-none border-2 border-orange-600 transition-all flex items-center justify-center gap-2"
-                asChild
-              >
-                <a href="https://wa.me/5491234567890" target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-5 h-5" />
-                  CONTACTATE
+              <div className="flex gap-6 items-center">
+                <a
+                  href="https://instagram.com/brixtattoo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-orange-500 hover:text-orange-400 transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-5 h-5" />
                 </a>
-              </Button>
+                <a
+                  href="https://wa.me/5491234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-orange-500 hover:text-orange-400 transition-colors"
+                  aria-label="WhatsApp"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                </a>
+              </div>
+
+              <div className="mt-12 text-sm text-zinc-400 font-mono space-y-1">
+                <p className="font-bold">La Plata & Buenos Aires</p>
+                <p>Lunes - Viernes</p>
+                <p className="text-orange-500 font-bold">www.BrixTattoo.com</p>
+              </div>
             </div>
 
-            <div className="flex gap-6 items-center">
-              <a
-                href="https://instagram.com/brixtattoo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-orange-500 hover:text-orange-400 transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="https://wa.me/5491234567890"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-orange-500 hover:text-orange-400 transition-colors"
-                aria-label="WhatsApp"
-              >
-                <MessageCircle className="w-5 h-5" />
-              </a>
-            </div>
-
-            <div className="mt-12 text-sm text-zinc-400 font-mono space-y-1">
-              <p className="font-bold">La Plata & Buenos Aires</p>
-              <p>Lunes - Viernes</p>
-              <p className="text-orange-500 font-bold">www.BrixTattoo.com</p>
+            {/* Right side - Video carousel (desktop only) */}
+            <div className="relative h-[600px] lg:h-[700px] hidden lg:flex items-center justify-center">
+              <div className="relative w-full h-full bg-zinc-900 rounded-lg overflow-hidden group">
+                <video
+                  key={videos[currentVideoIndex].src}
+                  autoPlay
+                  muted
+                  loop
+                  className="w-full h-full object-cover"
+                >
+                  <source src={videos[currentVideoIndex].src} type="video/mp4" />
+                </video>
+                
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-transparent to-zinc-950" />
+                
+                {/* Navigation arrows */}
+                <button
+                  onClick={() => handleVideoChange('prev')}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-orange-500 transition-colors z-10 bg-black/50 p-3 rounded-full hover:bg-black/80 opacity-0 group-hover:opacity-100"
+                  aria-label="Video anterior"
+                >
+                  <ChevronLeft className="w-8 h-8" />
+                </button>
+                <button
+                  onClick={() => handleVideoChange('next')}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-orange-500 transition-colors z-10 bg-black/50 p-3 rounded-full hover:bg-black/80 opacity-0 group-hover:opacity-100"
+                  aria-label="Siguiente video"
+                >
+                  <ChevronRight className="w-8 h-8" />
+                </button>
+                
+                {/* Video title and counter */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm bg-black/50 px-4 py-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                  {videos[currentVideoIndex].title} • {currentVideoIndex + 1} / {videos.length}
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Right side - Profile image with fade effect */}
-          <div className="relative h-[600px] lg:h-[700px] hidden lg:block">
-            {/* Profile image with gradient fade on sides */}
-            <div className="absolute inset-0 overflow-hidden">
-              <Image
-                src="/tattoo-artist-portrait-black-and-white.jpg"
-                alt="Tattoo Artist"
-                fill
-                className="object-cover object-top grayscale"
-                priority
-              />
-              {/* Gradient overlay to fade the sides */}
+          {/* Video carousel (mobile - below content) */}
+          <div className="relative w-full h-[300px] lg:hidden mt-12">
+            <div className="relative w-full h-full bg-zinc-900 rounded-lg overflow-hidden group">
+              <video
+                key={videos[currentVideoIndex].src}
+                autoPlay
+                muted
+                loop
+                className="w-full h-full object-cover"
+              >
+                <source src={videos[currentVideoIndex].src} type="video/mp4" />
+              </video>
+              
+              {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-transparent to-zinc-950" />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
-            </div>
-
-            {/* Decorative hand-drawn style icons */}
-            <div className="absolute top-20 right-20 text-white opacity-80">
-              <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M30 5L35 20L50 25L35 30L30 45L25 30L10 25L25 20L30 5Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                />
-              </svg>
-            </div>
-
-            <div className="absolute bottom-32 right-12 text-white opacity-80">
-              <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="40" cy="40" r="25" stroke="currentColor" strokeWidth="2" fill="none" />
-                <circle cx="40" cy="40" r="15" stroke="currentColor" strokeWidth="2" fill="none" />
-                <path d="M40 15L40 25M40 55L40 65M15 40L25 40M55 40L65 40" stroke="currentColor" strokeWidth="2" />
-              </svg>
-            </div>
-
-            <div className="absolute top-1/2 left-8 text-white opacity-80">
-              <svg width="50" height="70" viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M25 5C15 5 10 15 10 25C10 35 15 40 25 40C35 40 40 35 40 25C40 15 35 5 25 5Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                />
-                <path d="M15 45L35 45M20 50L30 50M22 55L28 55" stroke="currentColor" strokeWidth="2" />
-              </svg>
+              
+              {/* Navigation arrows */}
+              <button
+                onClick={() => handleVideoChange('prev')}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-orange-500 transition-colors z-10 bg-black/50 p-3 rounded-full hover:bg-black/80 lg:opacity-0 lg:group-hover:opacity-100"
+                aria-label="Video anterior"
+              >
+                <ChevronLeft className="w-8 h-8" />
+              </button>
+              <button
+                onClick={() => handleVideoChange('next')}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-orange-500 transition-colors z-10 bg-black/50 p-3 rounded-full hover:bg-black/80 lg:opacity-0 lg:group-hover:opacity-100"
+                aria-label="Siguiente video"
+              >
+                <ChevronRight className="w-8 h-8" />
+              </button>
+              
+              {/* Video title and counter */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm bg-black/50 px-4 py-2 rounded lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
+                {videos[currentVideoIndex].title} • {currentVideoIndex + 1} / {videos.length}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Portfolio Grid Section */}
-      <section className="px-4 py-20 bg-white text-black">
+      <section id="portfolio" className="px-4 py-20 bg-white text-black">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-black mb-6 leading-none text-balance">NUESTRO TRABAJO</h2>
@@ -192,7 +275,7 @@ export default function TattooPortfolio() {
               >
                 <div className="relative aspect-square overflow-hidden bg-zinc-900">
                   <Image
-                    src={item.image || "/placeholder.svg"}
+                    src={item.images[currentCardImageIndex[item.id] || 0] || "/placeholder.svg"}
                     alt={item.title}
                     fill
                     className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
@@ -202,12 +285,38 @@ export default function TattooPortfolio() {
                       {item.badge}
                     </span>
                   </div>
+                  {item.images.length > 1 && (
+                    <div className="absolute inset-0 flex items-center justify-between px-2 opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+                      <button 
+                        onClick={(e) => {
+                          e.preventDefault()
+                          handleCardImageChange(item.id, 'prev')
+                        }}
+                        className="text-white hover:text-orange-500 transition-colors bg-black/50 p-2 rounded-full hover:bg-black/80"
+                      >
+                        <ChevronLeft className="w-8 h-8" />
+                      </button>
+                      <button 
+                        onClick={(e) => {
+                          e.preventDefault()
+                          handleCardImageChange(item.id, 'next')
+                        }}
+                        className="text-white hover:text-orange-500 transition-colors bg-black/50 p-2 rounded-full hover:bg-black/80"
+                      >
+                        <ChevronRight className="w-8 h-8" />
+                      </button>
+                    </div>
+                  )}
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-black mb-2 leading-tight text-balance">{item.title}</h3>
                   <p className="text-zinc-600 mb-4 leading-relaxed">{item.description}</p>
                   <Button
-                    onClick={() => setSelectedImage(item.image)}
+                    onClick={() => {
+                      setSelectedImage(item.images[0])
+                      setSelectedImageIndex(0)
+                      setSelectedItemId(item.id)
+                    }}
                     variant="outline"
                     className="w-full bg-black text-white hover:bg-orange-600 hover:border-orange-600 font-bold rounded-none border-2 border-black transition-all"
                   >
@@ -221,7 +330,7 @@ export default function TattooPortfolio() {
       </section>
 
       {/* About the Artist Section */}
-      <section className="px-4 py-20 bg-black">
+      <section id="artist" className="px-4 py-20 bg-black">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -258,7 +367,7 @@ export default function TattooPortfolio() {
       </section>
 
       {/* Studio Hours Section */}
-      <section className="px-4 py-20 bg-white text-black">
+      <section id="contact" className="px-4 py-20 bg-white text-black">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-black mb-6 leading-none text-balance">HORARIOS DE ATENCIÓN</h2>
@@ -345,23 +454,64 @@ export default function TattooPortfolio() {
         </div>
       </footer>
 
-      {selectedImage && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-md"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button
-            className="absolute top-4 right-4 text-white hover:text-orange-500 transition-colors z-10"
+      {selectedImage && selectedItemId !== null && (() => {
+        const currentItem = portfolioItems.find(item => item.id === selectedItemId)
+        const hasMultipleImages = currentItem && currentItem.images.length > 1
+        
+        return (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-md"
             onClick={() => setSelectedImage(null)}
-            aria-label="Cerrar"
           >
-            <X className="w-8 h-8" />
-          </button>
-          <div className="relative max-w-5xl max-h-[90vh] w-full h-full" onClick={(e) => e.stopPropagation()}>
-            <Image src={selectedImage || "/placeholder.svg"} alt="Imagen ampliada" fill className="object-contain" />
+            <button
+              className="absolute top-4 right-4 text-white hover:text-orange-500 transition-colors z-10"
+              onClick={() => setSelectedImage(null)}
+              aria-label="Cerrar"
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <div className="relative max-w-5xl max-h-[90vh] w-full h-full flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+              <Image src={selectedImage || "/placeholder.svg"} alt="Imagen ampliada" fill className="object-contain" />
+              
+              {hasMultipleImages && (
+                <>
+                  <button
+                    className="absolute left-4 text-white hover:text-orange-500 transition-colors z-20 bg-black/50 p-2 rounded-full hover:bg-black/80"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      if (currentItem) {
+                        const newIndex = selectedImageIndex === 0 ? currentItem.images.length - 1 : selectedImageIndex - 1
+                        setSelectedImageIndex(newIndex)
+                        setSelectedImage(currentItem.images[newIndex])
+                      }
+                    }}
+                    aria-label="Imagen anterior"
+                  >
+                    <ChevronLeft className="w-8 h-8" />
+                  </button>
+                  <button
+                    className="absolute right-4 text-white hover:text-orange-500 transition-colors z-20 bg-black/50 p-2 rounded-full hover:bg-black/80"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      if (currentItem) {
+                        const newIndex = selectedImageIndex === currentItem.images.length - 1 ? 0 : selectedImageIndex + 1
+                        setSelectedImageIndex(newIndex)
+                        setSelectedImage(currentItem.images[newIndex])
+                      }
+                    }}
+                    aria-label="Siguiente imagen"
+                  >
+                    <ChevronRight className="w-8 h-8" />
+                  </button>
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm bg-black/50 px-3 py-1 rounded">
+                    {selectedImageIndex + 1} / {currentItem?.images.length}
+                  </div>
+                </>
+              )}
+            </div>
           </div>
-        </div>
-      )}
+        )
+      })()}
     </div>
   )
 }
