@@ -141,7 +141,7 @@ export default function TattooPortfolio() {
                   className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-8 py-6 text-base rounded-none border-2 border-orange-600 transition-all flex items-center justify-center gap-2"
                   asChild
                 >
-                  <a href="https://wa.me/5491234567890" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/5493865456477" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-5 h-5" />
                     CONTACTATE
                   </a>
@@ -150,7 +150,7 @@ export default function TattooPortfolio() {
 
               <div className="flex gap-6 items-center">
                 <a
-                  href="https://instagram.com/brixtattoo"
+                  href="https://www.instagram.com/brixestudio?igsh=MWV2bjh0MDhsYXJ3bA%3D%3D&utm_source=qr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-orange-500 hover:text-orange-400 transition-colors"
@@ -159,7 +159,7 @@ export default function TattooPortfolio() {
                   <Instagram className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://wa.me/5491234567890"
+                  href="https://wa.me/5493865456477"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-orange-500 hover:text-orange-400 transition-colors"
@@ -396,7 +396,7 @@ export default function TattooPortfolio() {
                 className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-12 py-6 text-lg rounded-none border-2 border-orange-600 transition-all flex items-center justify-center gap-2"
                 asChild
               >
-                <a href="https://wa.me/5491234567890" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/5493865456477" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5" />
                   AGENDAR CONSULTA
                 </a>
@@ -407,7 +407,7 @@ export default function TattooPortfolio() {
                 className="bg-white hover:bg-orange-600 hover:text-white text-black font-bold px-12 py-6 text-lg rounded-none border-2 border-black hover:border-orange-600 transition-all flex items-center justify-center gap-2"
                 asChild
               >
-                <a href="https://instagram.com/brixtattoo" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/brixestudio?igsh=MWV2bjh0MDhsYXJ3bA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
                   <Instagram className="w-5 h-5" />
                   SEGUINOS EN IG
                 </a>
@@ -428,7 +428,7 @@ export default function TattooPortfolio() {
 
             <div className="flex gap-6">
               <a
-                href="https://instagram.com/brixtattoo"
+                href="https://www.instagram.com/brixestudio?igsh=MWV2bjh0MDhsYXJ3bA%3D%3D&utm_source=qr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-orange-600 hover:border-orange-600 hover:text-white transition-all"
@@ -437,7 +437,7 @@ export default function TattooPortfolio() {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://wa.me/5491234567890"
+                href="https://wa.me/5493865456477"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-orange-600 hover:border-orange-600 hover:text-white transition-all"
