@@ -141,7 +141,7 @@ export default function TattooPortfolio() {
                   className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-8 py-6 text-base rounded-none border-2 border-orange-600 transition-all flex items-center justify-center gap-2"
                   asChild
                 >
-                  <a href="https://wa.me/5493865456477" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/5493865456477?text=Hola%20Brix%20Tattoo%2C%20quisiera%20consultar%20sobre%20un%20tatuaje.%20Me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20vuestros%20dise%C3%B1os%20y%20disponibilidad." target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-5 h-5" />
                     CONTACTATE
                   </a>
@@ -159,7 +159,7 @@ export default function TattooPortfolio() {
                   <Instagram className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://wa.me/5493865456477"
+                  href="https://wa.me/5493865456477?text=Hola%20Brix%20Tattoo%2C%20quisiera%20consultar%20sobre%20un%20tatuaje.%20Me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20vuestros%20dise%C3%B1os%20y%20disponibilidad."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-orange-500 hover:text-orange-400 transition-colors"
@@ -171,8 +171,7 @@ export default function TattooPortfolio() {
 
               <div className="mt-12 text-sm text-zinc-400 font-mono space-y-1">
                 <p className="font-bold">La Plata & Buenos Aires</p>
-                <p>Lunes - Viernes</p>
-                <p className="text-orange-500 font-bold">www.BrixTattoo.com</p>
+                <p>Lunes - Sabado</p>
               </div>
             </div>
 
@@ -396,7 +395,7 @@ export default function TattooPortfolio() {
                 className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-12 py-6 text-lg rounded-none border-2 border-orange-600 transition-all flex items-center justify-center gap-2"
                 asChild
               >
-                <a href="https://wa.me/5493865456477" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/5493865456477?text=Hola%20Brix%20Tattoo%2C%20quisiera%20agendar%20una%20consulta%20para%20un%20tatuaje.%20%C2%BFCu%C3%A1l%20es%20tu%20disponibilidad%3F" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5" />
                   AGENDAR CONSULTA
                 </a>
@@ -437,7 +436,7 @@ export default function TattooPortfolio() {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://wa.me/5493865456477"
+                href="https://wa.me/5493865456477?text=Hola%20Brix%20Tattoo%2C%20quisiera%20consultar%20sobre%20un%20tatuaje.%20Me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20vuestros%20dise%C3%B1os%20y%20disponibilidad."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-orange-600 hover:border-orange-600 hover:text-white transition-all"
