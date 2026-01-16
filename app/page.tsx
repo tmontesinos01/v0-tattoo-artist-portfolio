@@ -45,30 +45,30 @@ export default function TattooPortfolio() {
   const portfolioItems = [
     {
       id: 1,
-      title: "REALISMO FRAGMENTADO",
-      description: "Técnica de realismo con fragmentación artística",
+      title: "ROSTRO FRAGMENTADO",
+      description: "Black and Grey • 20cm x 29cm • 3 sesiones (16hs aprox.) • Agujas Spark 0803 RL, 1215 CM, 1211 CM • Tinta Klug v3 con Diffuse Shadow",
       badge: "NUEVO",
       images: ["/realismo_fragmentado.jpeg", "/realismo_fragmentado2.jpeg"],
     },
     {
       id: 2,
       title: "REALISMO MÁSCARA",
-      description: "Expresión artística en realismo detallado",
+      description: "Retrato hiperrealista con estética gótica • 2 sesiones (9hs aprox.) • Agujas 1201 RL, 0803 RL, 1211 CM • Tinta Klug v3 con Diffuse Shadow",
       badge: "DESTACADO",
       images: ["/realismo_mascara.jpeg", "/realismo_mascara2.jpeg"],
     },
     {
       id: 3,
-      title: "REALISMO ROSTRO",
-      description: "Precisión y detalle en cada trazo",
-      badge: "NUEVO",
+      title: "REALISMO BLACK AND GREY",
+description: "Realismo Black and Grey con intervención dramática • 2 sesiones (9hs aprox.) • Agujas RL y CM • Tinta Klug v3 con Diffuse Shadow en distintas diluciones",
+      badge: "DESTACADO",
       images: ["/realismo_rostro.jpeg", "/realismo_rostro2.jpeg"],
     },
     {
       id: 4,
       title: "LETTERING",
-      description: "Arte tipográfico en tinta",
-      badge: "DESTACADO",
+      description: "33cm x 17cm • 2 sesiones (8hs aprox.) • Agujas Spark 0803 RL, 1211 CM • Tinta Smoke BLK Premium",
+      badge: "NUEVO",
       images: ["/letter.jpeg"],
     },
   ]
