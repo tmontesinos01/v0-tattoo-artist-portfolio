@@ -98,6 +98,28 @@ description: "Realismo Black and Grey con intervención dramática • 2 sesione
         </div>
       </header>
 
+      {/* Floating Social Buttons */}
+      <div className="fixed right-4 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-3">
+        <a
+          href="https://www.instagram.com/brixestudio?igsh=MWV2bjh0MDhsYXJ3bA%3D%3D&utm_source=qr"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-12 h-12 bg-black border-2 border-white text-white flex items-center justify-center rounded-full hover:bg-orange-600 hover:border-orange-600 transition-all"
+          aria-label="Instagram"
+        >
+          <Instagram className="w-5 h-5" />
+        </a>
+        <a
+          href="https://wa.me/5493865456477?text=Hola%20Brix%20Tattoo%2C%20quisiera%20consultar%20sobre%20un%20tatuaje.%20Me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20vuestros%20dise%C3%B1os%20y%20disponibilidad."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-12 h-12 bg-black border-2 border-white text-white flex items-center justify-center rounded-full hover:bg-orange-600 hover:border-orange-600 transition-all"
+          aria-label="WhatsApp"
+        >
+          <MessageCircle className="w-5 h-5" />
+        </a>
+      </div>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center px-4 py-20 overflow-hidden bg-zinc-950 pt-32">
         {/* Diagonal orange accent stripe */}
@@ -146,27 +168,6 @@ description: "Realismo Black and Grey con intervención dramática • 2 sesione
                     CONTACTATE
                   </a>
                 </Button>
-              </div>
-
-              <div className="flex gap-6 items-center">
-                <a
-                  href="https://www.instagram.com/brixestudio?igsh=MWV2bjh0MDhsYXJ3bA%3D%3D&utm_source=qr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-orange-500 hover:text-orange-400 transition-colors"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://wa.me/5493865456477?text=Hola%20Brix%20Tattoo%2C%20quisiera%20consultar%20sobre%20un%20tatuaje.%20Me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20vuestros%20dise%C3%B1os%20y%20disponibilidad."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-orange-500 hover:text-orange-400 transition-colors"
-                  aria-label="WhatsApp"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                </a>
               </div>
 
               <div className="mt-12 text-sm text-zinc-400 font-mono space-y-1">
