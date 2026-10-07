@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Instagram, MessageCircle, X, ChevronLeft, ChevronRight } from "lucide-react"
+import { Instagram, MessageCircle, X, ChevronLeft, ChevronRight, Clock, MapPin, Phone } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 import Link from "next/link"
@@ -366,52 +366,92 @@ description: "Realismo Black and Grey con intervención dramática • 2 sesione
         </div>
       </section>
 
-      {/* Studio Hours Section */}
+      {/* Contact Section */}
       <section id="contact" className="px-4 py-20 bg-white text-black">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-7xl font-black mb-6 leading-none text-balance">HORARIOS DE ATENCIÓN</h2>
+            <p className="text-sm font-mono tracking-widest text-orange-600 uppercase font-bold mb-4">
+              Agendá tu consulta
+            </p>
+            <h2 className="text-5xl md:text-7xl font-black mb-6 leading-none text-balance">
+              CON<span className="text-orange-600">TACTO</span>
+            </h2>
             <p className="text-lg text-zinc-600 leading-relaxed max-w-2xl mx-auto">
               Visitanos en nuestro estudio o agendá tu consulta previa
             </p>
           </div>
 
-          <div className="max-w-2xl mx-auto">
-            <div className="text-center p-12 border-4 border-black rounded-none bg-black text-white mb-12">
-              <div className="space-y-4 text-xl">
-                <div className="flex justify-between items-center border-b border-zinc-700 pb-4">
-                  <span className="font-black">LUNES - VIERNES</span>
-                  <span className="text-orange-500 font-bold">10:00 AM - 8:00 PM</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="font-black">SÁBADO</span>
-                  <span className="text-orange-500 font-bold">10:00 AM - 4:00 PM</span>
+          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+            {/* Contact data card */}
+            <div className="border-4 border-black p-8 md:p-10 flex flex-col">
+              <div className="flex items-center gap-3 mb-8">
+                <Phone className="w-6 h-6 text-orange-600" />
+                <h3 className="text-2xl font-black">DATOS DE CONTACTO</h3>
+              </div>
+              <div className="space-y-4 flex-1 flex flex-col justify-center">
+                <a
+                  href="https://wa.me/5493865456477?text=Hola%20Brix%20Tattoo%2C%20quisiera%20consultar%20sobre%20un%20tatuaje.%20Me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20vuestros%20dise%C3%B1os%20y%20disponibilidad."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 border-2 border-black p-4 hover:bg-black hover:text-white transition-all group"
+                >
+                  <div className="w-12 h-12 bg-black text-white flex items-center justify-center group-hover:bg-orange-600 transition-colors shrink-0">
+                    <MessageCircle className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="font-black">AGENDAR CONSULTA POR <span className="text-orange-600">WHATSAPP</span></p>
+                    <p className="text-sm text-zinc-600 group-hover:text-zinc-300 transition-colors">+54 9 3865 45-6477</p>
+                  </div>
+                </a>
+                <a
+                  href="https://www.instagram.com/brixestudio?igsh=MWV2bjh0MDhsYXJ3bA%3D%3D&utm_source=qr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 border-2 border-black p-4 hover:bg-black hover:text-white transition-all group"
+                >
+                  <div className="w-12 h-12 bg-black text-white flex items-center justify-center group-hover:bg-orange-600 transition-colors shrink-0">
+                    <Instagram className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="font-black">SEGUINOS EN <span className="text-orange-600">INSTAGRAM</span></p>
+                    <p className="text-sm text-zinc-600 group-hover:text-zinc-300 transition-colors">@brixestudio</p>
+                  </div>
+                </a>
+                <div className="flex items-center gap-4 border-2 border-black p-4">
+                  <div className="w-12 h-12 bg-black text-white flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="font-black">UBICACIÓN</p>
+                    <p className="text-sm text-zinc-600">La Plata & Buenos Aires</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-12 py-6 text-lg rounded-none border-2 border-orange-600 transition-all flex items-center justify-center gap-2"
-                asChild
-              >
-                <a href="https://wa.me/5493865456477?text=Hola%20Brix%20Tattoo%2C%20quisiera%20agendar%20una%20consulta%20para%20un%20tatuaje.%20%C2%BFCu%C3%A1l%20es%20tu%20disponibilidad%3F" target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-5 h-5" />
-                  AGENDAR CONSULTA
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-white hover:bg-orange-600 hover:text-white text-black font-bold px-12 py-6 text-lg rounded-none border-2 border-black hover:border-orange-600 transition-all flex items-center justify-center gap-2"
-                asChild
-              >
-                <a href="https://www.instagram.com/brixestudio?igsh=MWV2bjh0MDhsYXJ3bA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
-                  <Instagram className="w-5 h-5" />
-                  SEGUINOS EN IG
-                </a>
-              </Button>
+            {/* Right: studio hours card */}
+            <div className="border-4 border-black bg-black text-white p-8 md:p-10">
+              <div className="flex items-center gap-3 mb-8">
+                <Clock className="w-6 h-6 text-orange-500" />
+                <h3 className="text-2xl font-black">HORARIOS DE ATENCIÓN</h3>
+              </div>
+              <div className="space-y-4 text-lg md:text-xl">
+                <div className="flex justify-between items-center border-b border-zinc-700 pb-4">
+                  <span className="font-black">LUNES - VIERNES</span>
+                  <span className="text-orange-500 font-bold">10:00 AM - 8:00 PM</span>
+                </div>
+                <div className="flex justify-between items-center border-b border-zinc-700 pb-4">
+                  <span className="font-black">SÁBADO</span>
+                  <span className="text-orange-500 font-bold">10:00 AM - 4:00 PM</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="font-black">DOMINGO</span>
+                  <span className="text-zinc-500 font-bold">CERRADO</span>
+                </div>
+              </div>
+              <p className="mt-8 pt-6 border-t border-zinc-700 text-sm text-zinc-400 leading-relaxed">
+                Las consultas y turnos se coordinan por WhatsApp o Instagram.
+              </p>
             </div>
           </div>
         </div>
@@ -427,24 +467,7 @@ description: "Realismo Black and Grey con intervención dramática • 2 sesione
             </div>
 
             <div className="flex gap-6">
-              <a
-                href="https://www.instagram.com/brixestudio?igsh=MWV2bjh0MDhsYXJ3bA%3D%3D&utm_source=qr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-orange-600 hover:border-orange-600 hover:text-white transition-all"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="https://wa.me/5493865456477?text=Hola%20Brix%20Tattoo%2C%20quisiera%20consultar%20sobre%20un%20tatuaje.%20Me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20vuestros%20dise%C3%B1os%20y%20disponibilidad."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-orange-600 hover:border-orange-600 hover:text-white transition-all"
-                aria-label="WhatsApp"
-              >
-                <MessageCircle className="w-5 h-5" />
-              </a>
+
             </div>
           </div>
 
